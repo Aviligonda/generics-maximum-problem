@@ -1,5 +1,15 @@
-public class Maximum {
-    public static <T extends Comparable> T testCase(T a, T b, T c) {
+class GenericsClass<T extends Comparable> {
+    T a;
+    T b;
+    T c;
+
+    public GenericsClass(T a, T b, T c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    public T testCase() {
         T max = a;
         if (b.compareTo(max) > 0) {
             max = b;
@@ -9,12 +19,18 @@ public class Maximum {
         }
         return max;
     }
+}
 
-
+public class Maximum {
     public static void main(String[] args) {
         System.out.println("Welcome Generics program to find maximum");
-        System.out.println("Maximum Of Three Integers is :" + testCase(2, 8, 9));
-        System.out.println("Maximum Of Three Floats is :" + testCase(2.3f, 8.6f, 9.6f));
-        System.out.println("Maximum Of Three Strings is :" + testCase("Apple", "Elephant", "Banana"));
+        {
+            GenericsClass<Integer> genericClass = new GenericsClass<>(2, 8, 3);
+            GenericsClass<Float> genericClass1 = new GenericsClass<>(2.6f, 8.8f, 3.9f);
+            GenericsClass<String> genericClass2 = new GenericsClass<>("Apple", "Elephant", "Banana");
+            System.out.println(genericClass.testCase());
+            System.out.println(genericClass1.testCase());
+            System.out.println(genericClass2.testCase());
+        }
     }
 }
